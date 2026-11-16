@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>AUTOR</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a th:href="@{/livros}">Livros</a></li>
+        <li><a th:href="@{/categoria}">Categorias</a></li>
+        <li><a th:href="@{/autor}">Autores</a></li>
+        <li><a th:href="@{/usuario}">Usuarios</a></li>
+        <li><a th:href="@{/emprestimo}">Emprestimos</a></li>
+    </ul>
+</nav>
+<h1>AUTORES</h1>
+<h1 th:text="${autor.nome}"></h1>
+<h1 th:text="${autor.nacionalidade}"></h1>
+<h1 th:text="${autor.dataNascimento}"></h1>
+</body>
+</html>
