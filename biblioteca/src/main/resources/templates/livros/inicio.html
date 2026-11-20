@@ -18,11 +18,26 @@
 <h1 th:text="'Sistema de Biblioteca'">
 </h1>
 
+<form th:action="@{/livros/criar}" method="post">
+    <label for="titulo">Título</label>
+    <input id="titulo" name="titulo" type="text" required>
+
+    <label for="autor">Autor</label>
+    <input id="autor" name="autor" type="text" required>
+
+    <label for="isbn">Isbn</label>
+    <input id="isbn" name="isbn" type="text" required>
+
+    <button type="submit">Criar livro</button>
+</form>
+
 <section class="recomendados">
-    <h2>Livros Recomendados</h2>
-    <h3 th:text="${livro.titulo}"></h3>
-    <p th:text="${livro.autor}"></p>
-    <p th:text="${livro.isbn}"></p>
+    <h2>Livros Cadastrados</h2>
+    <article th:each="livro : ${livros}">
+        <h3 th:text="${livro.titulo}"></h3>
+        <p th:text="${livro.autor}"></p>
+        <p th:text="${livro.isbn}"></p>
+    </article>
 
 </section>
 </body>

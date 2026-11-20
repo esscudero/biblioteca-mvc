@@ -20,19 +20,15 @@ public class LivroController {
     }
 
     @GetMapping
-    public String exibirLivro(Model model){
-        Livro livro = new Livro();
-        livro.setTitulo("Dom Casmurro");
-        livro.setAutor("Machado de assis");
-        livro.setIsbn("978-85-00-00000-0");
+    public String exibirLivros(Model model){
 
-        model.addAttribute("livro", livro);
+        model.addAttribute("livros", livros);
 
         return "livros/inicio";
     }
 
 
-    @PostMapping
+    @PostMapping("/criar")
     public String criarLivro(@ModelAttribute Livro livro, Model model){
         livros.add(livro);
         return "redirect:/livros";
