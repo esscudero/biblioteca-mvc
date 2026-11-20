@@ -4,21 +4,26 @@ import guilhermeescudero.biblioteca.models.Emprestimo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/emprestimo")
 public class EmprestimoController {
+    private final List<Emprestimo> emprestimos = new ArrayList<>();
 
     @GetMapping
     public String exibirEmprestimos(Model model){
-        Emprestimo emprestimo = new Emprestimo();
-        emprestimo.setDataRetirada("12/11/2026");
-        emprestimo.setUsuario("joaozinho");
-        emprestimo.setDataDevolvido("aa");
-
-        model.addAttribute("emprestimo", emprestimo);
-
+        model.addAttribute("emprestimos", emprestimos);
         return "livros/emprestimo";
+    }
+
+    @PostMapping("/criar")
+    public String criar(@ModelAttribute Emprestimo emprestimo) {
+        emprestimos.add(emprestimo);
+        return "redirect:/emprestimo";
     }
 }

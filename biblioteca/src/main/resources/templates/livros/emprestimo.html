@@ -1,26 +1,40 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Emprestimos</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-
-</head>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Empréstimos</title><link rel="stylesheet" th:href="@{/css/style.css}"></head>
 <body>
 <nav>
-    <ul>
-        <li><a th:href="@{/livros}">Livros</a></li>
-        <li><a th:href="@{/categoria}">Categorias</a></li>
-        <li><a th:href="@{/autor}">Autores</a></li>
-        <li><a th:href="@{/usuario}">Usuarios</a></li>
-        <li><a th:href="@{/emprestimo}">Emprestimos</a></li>
-    </ul>
+  <ul>
+    <li><a th:href="@{/livros}">Livros</a></li>
+    <li><a th:href="@{/categoria}">Categorias</a></li>
+    <li><a th:href="@{/autor}">Autores</a></li>
+    <li><a th:href="@{/usuario}">Usuarios</a></li>
+    <li><a th:href="@{/emprestimo}">Empréstimos</a></li>
+  </ul>
 </nav>
-    <h1>EMPRESTIMOS</h1>
-    <h2 th:text="${emprestimo.usuario}"></h2>
-    <p>Data Devolvido:</p>
-    <p th:text="${emprestimo.dataDevolvido}"></p>
-    <p>Data Retirada: </p>
-    <p th:text="${emprestimo.dataRetirada}"></p>
+
+<h1>Empréstimos</h1>
+
+<form th:action="@{/emprestimo/criar}" method="post">
+  <label for="usuario">Usuário</label>
+  <input id="usuario" name="usuario" required>
+
+  <label for="dataRetirada">Data de retirada</label>
+  <input id="dataRetirada" name="dataRetirada" required>
+
+  <label for="dataDevolvido">Data de devolução</label>
+  <input id="dataDevolvido" name="dataDevolvido" >
+
+  <button type="submit">Criar empréstimo</button>
+</form>
+
+<section>
+  <h2>Empréstimos cadastrados</h2>
+  <p th:if="${#lists.isEmpty(emprestimos)}">Nenhum empréstimo cadastrado.</p>
+  <article th:each="emprestimo : ${emprestimos}">
+    <h3 th:text="${emprestimo.usuario}">Usuário</h3>
+    <p>Data de retirada: <span th:text="${emprestimo.dataRetirada}"></span></p>
+    <p>Data de devolução: <span th:text="${emprestimo.dataDevolvido}"></span></p>
+  </article>
+</section>
 </body>
 </html>
