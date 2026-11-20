@@ -18,7 +18,9 @@
 </nav>
     <h1>EMPRESTIMOS</h1>
     <h2 th:text="${emprestimo.usuario}"></h2>
-    <p th:text="${emprestimo.dataDevolucao}">Data devolução:</p>
+    <p>Data Devolvido:</p>
+    <p th:text="${emprestimo.dataDevolvido}"></p>
+    <p>Data Retirada: </p>
     <p th:text="${emprestimo.dataRetirada}"></p>
 </body>
 </html>

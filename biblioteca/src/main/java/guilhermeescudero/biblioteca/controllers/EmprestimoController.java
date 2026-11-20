@@ -15,6 +15,7 @@ public class EmprestimoController {
         Emprestimo emprestimo = new Emprestimo();
         emprestimo.setDataRetirada("12/11/2026");
         emprestimo.setUsuario("joaozinho");
+        emprestimo.setDataDevolvido("aa");
 
         model.addAttribute("emprestimo", emprestimo);
 
